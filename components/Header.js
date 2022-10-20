@@ -1,14 +1,32 @@
-import Link from 'next/link';
+import Head from "next/head";
 
-export default function Header({ name }) {
-  return (
-    <header className="pt-20 pb-12">
-      <div className="w-12 h-12 rounded-full block mx-auto mb-4 bg-gradient-conic from-gradient-3 to-gradient-4" />
-      <p className="text-2xl dark:text-white text-center">
-        <Link href="/">
-          <a>{name}</a>
-        </Link>
-      </p>
-    </header>
-  );
+export function Header(props) {
+	return (
+		<Head>
+			<title>{props.title}</title>
+			<meta property="og:title" content={props.title} key="title" />
+			<meta property="og:image" content="/background.jpg"></meta>
+			<link
+				rel="apple-touch-icon"
+				sizes="180x180"
+				href="/apple-touch-icon.png"
+			></link>
+			<link
+				rel="icon"
+				type="image/png"
+				sizes="32x32"
+				href="/favicon-32x32.png"
+			></link>
+			<link
+				rel="icon"
+				type="image/png"
+				sizes="16x16"
+				href="/favicon-16x16.png"
+			></link>
+			<link rel="manifest" href="/site.webmanifest"></link>
+			<meta name="theme-color" content="#98d9d8"/>
+		</Head>
+	);
 }
+
+export default Header;
