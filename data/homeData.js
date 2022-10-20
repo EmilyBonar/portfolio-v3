@@ -2,7 +2,7 @@ import Logo from '../components/Logo';
 import Link from 'next/link';
 import projects from './projectData';
 import React from 'react';
-import about from './about.mdx';
+import About from './about.mdx';
 import Image from 'next/future/image';
 
 export const socialLinks = [
@@ -52,7 +52,7 @@ function HeaderCard() {
 function AboutCard() {
   return (
     <section className="p-8">
-      <about />
+      <About />
     </section>
   );
 }

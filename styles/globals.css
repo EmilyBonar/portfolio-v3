@@ -1,17 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@tailwind variants;
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-primary);
+:root {
+  background-size: cover;
+  background-color: #ebf0f0;
+  background-image: url(/background.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-body {
-  font-family: var(--font-secondary);
+strong {
+  @apply inline-block font-semibold transition transform hover:-translate-y-0.5;
+}
+
+a strong {
+  @apply hover:text-blue-600;
 }
