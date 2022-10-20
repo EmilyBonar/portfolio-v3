@@ -1,5 +1,5 @@
 import React from 'react';
-import Page from '../components/Page.js';
+import Page from '../components/Page';
 
 const Resume = () => (
   <Page title="Emily Bonar - Resume">

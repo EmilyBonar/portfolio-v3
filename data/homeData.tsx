@@ -1,11 +1,11 @@
-import Logo from '../components/Logo';
+import Logo, { LogoProps } from '../components/Logo';
 import Link from 'next/link';
-import projects from './projectData';
+import projects, { Project } from './projectData';
 import React from 'react';
 import About from './about.mdx';
 import Image from 'next/future/image';
 
-export const socialLinks = [
+export const socialLinks: LogoProps[] = [
   {
     name: 'LinkedIn',
     icon: '/linkedin.svg',
@@ -76,9 +76,13 @@ function MiniProjectsCard() {
   );
 }
 
-function MiniProject(props) {
+interface MiniProjectProps {
+  project: Project;
+}
+
+const MiniProject: React.FC<MiniProjectProps> = (props) => {
   return (
-    <Link href={`./projects?query=${props.project.title}`}>
+    <Link href={`./projects?searchQuery=${props.project.title}`}>
       <a className="flex-shrink-0 w-32 h-32 mb-4 group">
         <div className="w-full h-full shadow-lg">
           <Image
@@ -99,7 +103,7 @@ function MiniProject(props) {
       </a>
     </Link>
   );
-}
+};
 
 function SkillsCard() {
   return (
@@ -116,15 +120,19 @@ function SkillsCard() {
   );
 }
 
-function Skill(props) {
+interface SkillProps {
+  name: string;
+}
+
+const Skill: React.FC<SkillProps> = (props) => {
   return (
-    <Link href={`/projects?query=${props.name}`}>
+    <Link href={`/projects?searchQuery=${props.name}`}>
       <a className="px-3 py-2 mb-4 mr-4 text-lg font-semibold text-gray-800 transition bg-pink-100 rounded-lg shadow-inner hover:bg-pink-300 hover:shadow-lg">
         {props.name}
       </a>
     </Link>
   );
-}
+};
 
 export const skills = [
   'React',

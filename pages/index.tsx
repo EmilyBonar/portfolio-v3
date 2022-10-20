@@ -1,6 +1,6 @@
 import React from 'react';
-import cards from '../data/homeData.js';
-import HomeCard from '../components/HomeCard.js';
+import cards from '../data/homeData';
+import HomeCard from '../components/HomeCard';
 import Page from '../components/Page';
 
 const Home = () => (

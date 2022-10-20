@@ -2,8 +2,14 @@ import React from 'react';
 import Logo from './Logo';
 import AnimatedCard from './AnimatedCard';
 import Image from 'next/future/image';
+import { Project } from '../data/projectData';
 
-export function ProjectCard(props) {
+interface Props {
+  index: number;
+  project: Project;
+}
+
+const ProjectCard: React.FC<Props> = (props) => {
   return (
     <AnimatedCard index={props.index}>
       <div className="relative flex flex-col h-full max-w-md min-h-full pb-8 m-auto overflow-hidden transition transform bg-white rounded-lg shadow-lg hover:-translate-y-2 md:mx-2">
@@ -45,6 +51,6 @@ export function ProjectCard(props) {
       </div>
     </AnimatedCard>
   );
-}
+};
 
 export default ProjectCard;

@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
-import projects from '../data/projectData.ts';
-import ProjectCard from '../components/ProjectCard.js';
-import Page from '../components/Page.js';
+import projects, { Project } from '../data/projectData';
+import ProjectCard from '../components/ProjectCard';
+import Page from '../components/Page';
 
 function Projects() {
   const router = useRouter();
-  const { query } = router.query;
+  const { searchQuery } = router.query;
 
-  const [search, setSearch] = useState(query || '');
+  const [search, setSearch] = useState(
+    (Array.isArray(searchQuery) ? searchQuery.join(',') : searchQuery) ?? ''
+  );
   const [filteredProjects, setFilteredProjects] = useState(projects);
 
   useEffect(() => {
@@ -24,15 +26,24 @@ function Projects() {
     );
   }, [search]);
 
+  const handleSearchInput = useCallback(
+    (input: string) => setSearch(input),
+    []
+  );
+
   return (
     <Page title="Emily Bonar - Projects">
-      <SearchBar initialValue={query} onInput={(input) => setSearch(input)} />
+      <SearchBar initialValue={search} onInput={handleSearchInput} />
       <ProjectList projects={filteredProjects} />
     </Page>
   );
 }
 
-function ProjectList(props) {
+interface ProjectListProps {
+  projects: Project[];
+}
+
+const ProjectList: React.FC<ProjectListProps> = (props) => {
   return (
     <div className="grid grid-flow-row-dense m-auto md:grid-cols-2 xl:grid-cols-3">
       {props.projects.map((project, index) => (
@@ -40,18 +51,23 @@ function ProjectList(props) {
       ))}
     </div>
   );
+};
+
+interface SearchBarProps {
+  initialValue: string;
+  onInput: (value: string) => void;
 }
 
-function SearchBar(props) {
+const SearchBar: React.FC<SearchBarProps> = (props) => {
   return (
     <input
       type="search"
       className="w-full p-3 pl-4 mb-4 text-xl rounded-full outline-none focus:ring-2 ring-gray-500"
       placeholder="Search..."
-      onInput={(e) => props.onInput(e.target.value.toLowerCase())}
+      onChange={(e) => props.onInput(e.target.value.toLowerCase())}
       defaultValue={props.initialValue}
     ></input>
   );
-}
+};
 
 export default Projects;

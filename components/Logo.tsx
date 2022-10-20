@@ -1,6 +1,12 @@
 import Image from 'next/future/image';
 
-export default function Logo(props) {
+export interface LogoProps {
+  link: string;
+  name: string;
+  icon: string;
+}
+
+const Logo: React.FC<LogoProps> = (props) => {
   return (
     <a href={props.link} className="mx-2" target="_blank" rel="noreferrer">
       <Image
@@ -12,4 +18,6 @@ export default function Logo(props) {
       />
     </a>
   );
-}
+};
+
+export default Logo;

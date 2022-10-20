@@ -1,6 +1,10 @@
 import Head from 'next/head';
 
-export function Header(props) {
+interface Props {
+  title: string;
+}
+
+const Header: React.FC<Props> = (props) => {
   return (
     <Head>
       <title>{props.title}</title>
@@ -27,6 +31,6 @@ export function Header(props) {
       <meta name="theme-color" content="#98d9d8" />
     </Head>
   );
-}
+};
 
 export default Header;

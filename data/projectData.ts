@@ -1,4 +1,4 @@
-interface Project {
+export interface Project {
   title: string;
   media: string;
   technologies: string[];
