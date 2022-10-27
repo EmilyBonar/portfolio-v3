@@ -3,7 +3,7 @@ import Link from 'next/link';
 import projects, { Project } from './projectData';
 import React from 'react';
 import About from './about.mdx';
-import Image from "next/image";
+import Image from 'next/image';
 
 export const socialLinks: LogoProps[] = [
   {
@@ -61,11 +61,9 @@ function MiniProjectsCard() {
   return (
     <section className="p-8 pb-4">
       <Link href="./projects">
-        <a>
-          <h3 className="inline-block mb-2 text-xl font-semibold text-gray-900">
-            See My Projects
-          </h3>
-        </a>
+        <h3 className="inline-block mb-2 text-xl font-semibold text-gray-900">
+          See My Projects
+        </h3>
       </Link>
       <div className="flex gap-4 overflow-x-scroll overflow-y-hidden flex-nowrap">
         {projects.map((project, index) => {
@@ -82,25 +80,26 @@ interface MiniProjectProps {
 
 const MiniProject: React.FC<MiniProjectProps> = (props) => {
   return (
-    <Link href={`./projects?searchQuery=${props.project.title}`}>
-      <a className="flex-shrink-0 w-32 h-32 mb-4 group">
-        <div className="w-full h-full shadow-lg">
-          <Image
-            className="block object-cover object-top w-full h-full rounded"
-            src={props.project.media}
-            width={128}
-            height={128}
-            alt={`Link to ${props.project.title}`}
-          />
-        </div>
-        <div className="relative w-full h-full p-2 bg-white rounded shadow-lg opacity-0 top-[-100%] bg-opacity-90 group-hover:opacity-100">
-          <p className="font-semibold text-md">{props.project.title}</p>
-          <p className="text-sm">
-            {props.project.technologies.slice(0, 4).join(' | ') +
-              (props.project.technologies.length > 4 ? ' | ...' : '')}
-          </p>
-        </div>
-      </a>
+    <Link
+      href={`./projects?searchQuery=${props.project.title}`}
+      className="flex-shrink-0 w-32 h-32 mb-4 group"
+    >
+      <div className="w-full h-full shadow-lg">
+        <Image
+          className="block object-cover object-top w-full h-full rounded"
+          src={props.project.media}
+          width={128}
+          height={128}
+          alt={`Link to ${props.project.title}`}
+        />
+      </div>
+      <div className="relative w-full h-full p-2 bg-white rounded shadow-lg opacity-0 top-[-100%] bg-opacity-90 group-hover:opacity-100">
+        <p className="font-semibold text-md">{props.project.title}</p>
+        <p className="text-sm">
+          {props.project.technologies.slice(0, 4).join(' | ') +
+            (props.project.technologies.length > 4 ? ' | ...' : '')}
+        </p>
+      </div>
     </Link>
   );
 };
@@ -126,10 +125,11 @@ interface SkillProps {
 
 const Skill: React.FC<SkillProps> = (props) => {
   return (
-    <Link href={`/projects?searchQuery=${props.name}`}>
-      <a className="px-3 py-2 mb-4 mr-4 text-lg font-semibold text-gray-800 transition bg-pink-100 rounded-lg shadow-inner hover:bg-pink-300 hover:shadow-lg">
-        {props.name}
-      </a>
+    <Link
+      href={`/projects?searchQuery=${props.name}`}
+      className="px-3 py-2 mb-4 mr-4 text-lg font-semibold text-gray-800 transition bg-pink-100 rounded-lg shadow-inner hover:bg-pink-300 hover:shadow-lg"
+    >
+      {props.name}
     </Link>
   );
 };

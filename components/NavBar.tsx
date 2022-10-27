@@ -25,14 +25,13 @@ const NavItem: React.FC<NavItemProps> = (props) => {
     return props.currentPage === props.name;
   }, [props.currentPage, props.name]);
   return (
-    <Link href={props.location}>
-      <a
-        className={`transition border-b-2 border-black ${
-          current ? 'border-opacity-40' : 'border-opacity-0'
-        } hover:border-opacity-90`}
-      >
-        {props.name}
-      </a>
+    <Link
+      href={props.location}
+      className={`transition border-b-2 border-black ${
+        current ? 'border-opacity-40' : 'border-opacity-0'
+      } hover:border-opacity-90`}
+    >
+      {props.name}
     </Link>
   );
 };
