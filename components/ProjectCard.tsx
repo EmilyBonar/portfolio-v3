@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from './Logo';
 import AnimatedCard from './AnimatedCard';
-import Image from 'next/future/image';
+import Image from "next/image";
 import { Project } from '../data/projectData';
 
 interface Props {

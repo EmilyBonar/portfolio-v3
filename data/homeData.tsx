@@ -3,7 +3,7 @@ import Link from 'next/link';
 import projects, { Project } from './projectData';
 import React from 'react';
 import About from './about.mdx';
-import Image from 'next/future/image';
+import Image from "next/image";
 
 export const socialLinks: LogoProps[] = [
   {
