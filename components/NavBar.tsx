@@ -1,15 +1,12 @@
 import Link from 'next/link';
 import { useMemo } from 'react';
 
-export function NavBar(props) {
-  const currentPage = useMemo(() => {
-    return props.title.split('Emily Bonar - ').join('');
-  }, [props.title]);
+export function NavBar({ title }: { title: string }) {
   return (
     <nav className="flex w-full gap-8 m-auto mt-6 mb-4 text-2xl font-semibold text-gray-600 lg:gap-12">
-      <NavItem name="Home" location="/" currentPage={currentPage} />
-      <NavItem name="Projects" location="/projects" currentPage={currentPage} />
-      <NavItem name="Resume" location="/resume" currentPage={currentPage} />
+      <NavItem name="Home" location="/" currentPage={title} />
+      <NavItem name="Projects" location="/projects" currentPage={title} />
+      <NavItem name="Contact" location="/contact" currentPage={title} />
     </nav>
   );
 }

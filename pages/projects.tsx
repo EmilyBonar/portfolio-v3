@@ -32,7 +32,7 @@ function Projects() {
   );
 
   return (
-    <Page title="Emily Bonar - Projects">
+    <Page title="Projects">
       <SearchBar initialValue={search} onInput={handleSearchInput} />
       <ProjectList projects={filteredProjects} />
     </Page>

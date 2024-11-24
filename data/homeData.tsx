@@ -19,20 +19,27 @@ export const socialLinks: LogoProps[] = [
 ];
 
 export const cards = [
-  <HeaderCard />,
-  <AboutCard />,
-  <MiniProjectsCard />,
-  <SkillsCard />,
+  <HeaderCard key="header" />,
+  <AboutCard key="about" />,
+  <MiniProjectsCard key="mini-projects" />,
+  <SkillsCard key="skills" />,
 ];
 
 function HeaderCard() {
   return (
     <header className="flex overflow-hidden rounded-l max-h-64">
-      <img className="object-cover w-0 lg:w-56" src="/profPic.jpg" />
+      <div className="w-0 lg:w-56 relative">
+        <Image
+          src="/profPic.jpg"
+          fill
+          alt="Selfie of author"
+          style={{ objectFit: 'cover' }}
+        />
+      </div>
       <div className="flex-auto p-4 text-right sm:p-8">
         <h1 className="my-2 text-5xl md:text-7xl">Emily Bonar</h1>
         <h2 className="text-xl text-gray-700 md:text-2xl">
-          Front-End Developer
+          Senior Front-End Developer
         </h2>
         <div className="flex justify-end mt-2">
           {socialLinks.map((social, index) => (
@@ -51,7 +58,7 @@ function HeaderCard() {
 
 function AboutCard() {
   return (
-    <section className="p-8">
+    <section className="p-8 flex flex-col gap-4">
       <About />
     </section>
   );

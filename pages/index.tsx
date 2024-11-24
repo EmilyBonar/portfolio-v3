@@ -4,9 +4,11 @@ import HomeCard from '../components/HomeCard';
 import Page from '../components/Page';
 
 const Home = () => (
-  <Page title="Emily Bonar - Home">
+  <Page title="Home">
     {cards.map((cardData, index) => (
-      <HomeCard content={cardData} index={index} key={index} />
+      <HomeCard index={index} key={index}>
+        {cardData}
+      </HomeCard>
     ))}
   </Page>
 );

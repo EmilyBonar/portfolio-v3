@@ -9,7 +9,7 @@ interface Props {
 const Page: React.FC<Props> = (props) => {
   return (
     <div className="flex flex-col w-5/6 max-h-screen pb-4 m-auto max-w-7xl">
-      <Header title={props.title} />
+      <Header title={`Emily Bonar - ${props.title}`} />
       <NavBar title={props.title} />
       <main className="w-full">{props.children}</main>
     </div>
